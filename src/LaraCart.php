@@ -12,18 +12,25 @@ class LaraCart
     {
         $this->setCount();
         $this->setTotal();
+
+        $this->storeSession();
     }
 
     public function add(array $item)
     {
         $this->items[] = $item;
-
+        
         $this->init();
     }
 
     public function get()
     {
         return $this->items;
+    }
+
+    public function storeSession()
+    {
+        session(['laracart' => collect($this)->toArray()]);
     }
 
     public function setCount()
