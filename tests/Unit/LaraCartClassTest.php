@@ -83,4 +83,15 @@ class LaraCartClassTest extends TestCase
 
         $this->assertCount(0, $laracart->get());
     }
+
+    /** @test */
+    function it_can_find_an_item_by_uuid() {
+        $laracart = new LaraCart();
+
+        $laracart->add($this->itemOne);
+        $laracart->add($this->itemTwo);
+
+        $this->assertEquals($this->itemOne, $laracart->findByUuid('111AAA'));
+        $this->assertEquals($this->itemTwo, $laracart->findByUuid('222BBB'));
+    }
 }

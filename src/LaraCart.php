@@ -72,7 +72,16 @@ class LaraCart
         $this->items = [];
         $this->count = 0;
         $this->total = 0;
-        
+
         session(['laracart' => null]);
+    }
+
+    public function findByUuid(string $uuid)
+    {
+        if ($get = $this->get()) {
+            $found = collect($get)->where('uuid', $uuid);
+
+            return $found ? $found->first() : null;
+        }
     }
 }
