@@ -118,7 +118,10 @@ class LaraCartClassTest extends TestCase
         $newItemOne = [
             'uuid' => '111AAA',
             'name' => "Super Waffle by SoloWaffles",
-            'price' => '7.1'
+            'price' => '7.1',
+            'extras' => [
+                'special_note' => 'Thank you'
+            ],
         ];
 
         $laracart->update('111AAA', $newItemOne);
@@ -134,5 +137,10 @@ class LaraCartClassTest extends TestCase
 
         $this->assertEquals(7.1, $laracart->total);
         $this->assertEquals(1, $laracart->count);
+
+        $this->assertEquals(
+            ['special_note' => 'Thank you'],
+            $laracart->items[0]['extras']
+        );
     }
 }
