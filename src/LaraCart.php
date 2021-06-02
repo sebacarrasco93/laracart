@@ -8,6 +8,25 @@ class LaraCart
     public $count = 0;
     public $total = 0;
 
+    public function __construct()
+    {
+        $this->readFromSession();
+    }
+
+    public function readFromSession()
+    {
+        if (isset(session('laracart')['items'])) {
+            $this->items = session('laracart')['items'];
+            $this->count = session('laracart')['count'];
+            $this->total = session('laracart')['total'];
+        }
+    }
+
+    public function storeSession()
+    {
+        session(['laracart' => collect($this)->toArray()]);
+    }
+
     public function init()
     {
         $this->setCount();
@@ -24,13 +43,8 @@ class LaraCart
     }
 
     public function get()
-    {
+    {        
         return $this->items;
-    }
-
-    public function storeSession()
-    {
-        session(['laracart' => collect($this)->toArray()]);
     }
 
     public function setCount()
