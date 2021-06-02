@@ -37,7 +37,7 @@ class LaraCartClassTest extends TestCase
 
         $this->assertEquals($this->itemOne, session('laracart')['items'][0]);
         $this->assertEquals($this->itemTwo, session('laracart')['items'][1]);
-        
+
         $this->assertEquals(2, session('laracart')['count']);
         $this->assertEquals(16.4, session('laracart')['total']);
     }
@@ -70,5 +70,17 @@ class LaraCartClassTest extends TestCase
         $laracart->add($this->itemTwo);
         
         $this->assertEquals(16.4, $laracart->getTotal());
+    }
+
+    /** @test */
+    function it_can_flush_all() {
+        $laracart = new LaraCart();
+
+        $laracart->add($this->itemOne);
+        $laracart->add($this->itemTwo);
+
+        $laracart->flush();
+
+        $this->assertCount(0, $laracart->get());
     }
 }

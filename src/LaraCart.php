@@ -43,7 +43,7 @@ class LaraCart
     }
 
     public function get()
-    {        
+    {
         return $this->items;
     }
 
@@ -65,5 +65,14 @@ class LaraCart
     public function getTotal()
     {
         return $this->total;
+    }
+
+    public function flush()
+    {
+        $this->items = [];
+        $this->count = 0;
+        $this->total = 0;
+        
+        session(['laracart' => null]);
     }
 }
