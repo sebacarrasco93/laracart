@@ -99,4 +99,13 @@ class LaraCart
             }
         });
     }
+
+    public function update(string $uuid, $newItem)
+    {
+        $get = $this->get();
+
+        $foundItem = $this->delete($uuid);
+
+        $this->add($newItem);
+    }
 }

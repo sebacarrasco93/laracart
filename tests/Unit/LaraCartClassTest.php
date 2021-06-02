@@ -108,4 +108,31 @@ class LaraCartClassTest extends TestCase
         $laracart->delete('222BBB');
         $this->assertEquals(0, $laracart->count);
     }
+
+    /** @test */
+    function it_can_update_an_item() {
+        $laracart = new LaraCart();
+
+        $laracart->add($this->itemOne);
+
+        $newItemOne = [
+            'uuid' => '111AAA',
+            'name' => "Super Waffle by SoloWaffles",
+            'price' => '7.1'
+        ];
+
+        $laracart->update('111AAA', $newItemOne);
+
+        $this->assertEquals(
+            'Super Waffle by SoloWaffles',
+            $laracart->items[0]['name']
+        );
+        $this->assertEquals(
+            7.1,
+            $laracart->items[0]['price']
+        );
+
+        $this->assertEquals(7.1, $laracart->total);
+        $this->assertEquals(1, $laracart->count);
+    }
 }
