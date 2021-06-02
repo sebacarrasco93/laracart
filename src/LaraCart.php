@@ -7,10 +7,17 @@ class LaraCart
     public $items = [];
     public $count = 0;
     public $total = 0;
+    
+    public $priceKey = 'price';
 
     public function __construct()
     {
         $this->readFromSession();
+    }
+
+    public function setPriceKey($name)
+    {
+        $this->priceKey = $name;
     }
 
     public function readFromSession()
@@ -59,7 +66,7 @@ class LaraCart
 
     public function setTotal()
     {
-        $this->total = collect($this->items)->pluck('price')->sum();
+        $this->total = collect($this->items)->pluck($this->priceKey)->sum();
     }
 
     public function getTotal()
