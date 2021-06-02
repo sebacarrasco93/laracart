@@ -1,0 +1,26 @@
+{
+    "name": "sebacarrasco93/laracart",
+    "type": "package",
+    "description": "A simple backend-managed Cart for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Seba Carrasco Poblete",
+            "email": "sebacarrasco93@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SebaCarrasco93\\LaraCart\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SebaCarrasco93\\LaraCart\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.18",
+        "pestphp/pest": "^1.3"
+    }
+}
