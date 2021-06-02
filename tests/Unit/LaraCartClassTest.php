@@ -94,4 +94,18 @@ class LaraCartClassTest extends TestCase
         $this->assertEquals($this->itemOne, $laracart->findByUuid('111AAA'));
         $this->assertEquals($this->itemTwo, $laracart->findByUuid('222BBB'));
     }
+
+    /** @test */
+    function it_can_delete_a_item() {
+        $laracart = new LaraCart();
+
+        $laracart->add($this->itemOne);
+        $laracart->add($this->itemTwo);
+
+        $laracart->delete('111AAA');
+        $this->assertEquals(1, $laracart->count);
+
+        $laracart->delete('222BBB');
+        $this->assertEquals(0, $laracart->count);
+    }
 }

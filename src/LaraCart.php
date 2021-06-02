@@ -84,4 +84,19 @@ class LaraCart
             return $found ? $found->first() : null;
         }
     }
+
+    public function delete(string $uuid)
+    {
+        $get = $this->get();
+
+        $toRemove = $this->findByUuid($uuid);
+
+        $this->flush();
+
+        return collect($get)->each(function ($item) use ($toRemove) {
+            if ($item != $toRemove) {
+                $this->add($item);
+            }
+        });
+    }
 }
