@@ -22,5 +22,15 @@
     "require-dev": {
         "orchestra/testbench": "^6.18",
         "pestphp/pest": "^1.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SebaCarrasco93\\LaraCart\\LaraCartServiceProvider"
+            ],
+            "aliases": {
+                "LaraCart": "SebaCarrasco93\\LaraCart\\Facades\\LaraCart"
+            }
+        }
     }
 }

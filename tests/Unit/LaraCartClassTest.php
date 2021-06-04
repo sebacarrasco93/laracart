@@ -79,7 +79,7 @@ class LaraCartClassTest extends TestCase
         $laracart->add($this->itemOne);
         $laracart->add($this->itemTwo);
 
-        $laracart->flush();
+        $laracart->se();
 
         $this->assertCount(0, $laracart->get());
     }

@@ -9,9 +9,9 @@ class LaraCartServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config/laracart.php' => base_path('config/laracart.php')
-        ], 'laracart-config');
+        // $this->publishes([
+        //     __DIR__ . '/../config/laracart.php' => base_path('config/laracart.php')
+        // ], 'laracart-config');
     }
 
     public function register()
@@ -20,6 +20,6 @@ class LaraCartServiceProvider extends ServiceProvider
             return new LaraCart();
         });
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/laracart.php', 'laracart');
+        // $this->mergeConfigFrom(__DIR__ . '/../config/laracart.php', 'laracart');
     }
 }
